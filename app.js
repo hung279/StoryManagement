@@ -20,9 +20,9 @@ mongoose
 
 app.use(express.json());
 
-const userRouter = require("./routers/user.router");
+const router = require("./routers/index");
 
-app.use("/api", userRouter);
+app.use("/", router);
 
 app.use("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
