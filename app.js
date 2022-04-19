@@ -21,8 +21,10 @@ mongoose
 app.use(express.json());
 
 const router = require("./routers/index");
+const authRouter = require("./routers/auth.router");
 
 app.use("/", router);
+app.use("/auth", authRouter);
 
 app.use("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

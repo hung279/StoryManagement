@@ -54,7 +54,7 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
   res.status(200).json({ resetURL });
 });
 
-exports.changePassword = asyncHandle(async (req, res, next) => {
+exports.changePassword = catchAsync(async (req, res, next) => {
   const user = await User.findOne({
     passwordResetToken: req.params.resetToken,
     passwordResetExpires: { $gte: Date.now() },
