@@ -3,6 +3,13 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 const storyController = {
+  aliasTopTours: (req, res, next) => {
+    req.query.limit = '10';
+    req.query.sort = '-rating';
+    req.query.fields = 'name, chapter, author, category, rating';
+    next();
+  },
+
   addStory: catchAsync(async (req, res, next) => {
     const newStory = await Story.create(req.body);
 

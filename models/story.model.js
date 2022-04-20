@@ -29,6 +29,12 @@ const storySchema = mongoose.Schema(
       type: String,
       required: [true, "Thể loại là trường bắt buộc"],
     },
+    rating: {
+      type: Number,
+      default: 0,
+      min: [1, "Đánh giá từ 1 -> 5"],
+      max: [5, "Đánh giá từ 1 -> 5"],
+    },
   },
   {
     timestamp: true,
