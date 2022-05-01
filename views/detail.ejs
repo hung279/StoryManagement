@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truyện hay</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,900&family=Cherish&family=Hind+Siliguri:wght@300;500&display=swap"
+        rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="./static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./static//favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./static//favicon/favicon-16x16.png">
+    <!-- home -->
+    <link rel="stylesheet" href="./static/css/home.css">
+    <!-- detail -->
+    <link rel="stylesheet" href="./static/css/detail.css">
+    <!-- boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="./plugins/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="./plugins/owlcarousel/assets/owl.theme.default.min.css">
+    <!-- jQuery -->
+    <script src="./static/js/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+    <!-- headerContact -->
+    <div class="wrapper wrapper__top">
+        <div class="container">
+            <section class="header__top">
+                <div class="header__top--socical">
+                    <a href="#" class="socical__icon">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="#" class="socical__icon">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                    <a href="#" class="socical__icon">
+                        <ion-icon name="logo-pinterest"></ion-icon>
+                    </a>
+                    <a href="#" class="socical__icon">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </div>
+                <div class="header__top--title">
+                    <p>Welcome to Truyenhay Company. <a href="#" class="text-decoration-none">Get Free Quote</a></p>
+                </div>
+                <div class="header__contact">
+                    <div class="header__contact--item">
+                        <ion-icon name="mail"></ion-icon>
+                        <a href="#" class="text-decoration-none">truyenhay@conpany.com</a>
+                    </div>
+                    <div class="header__contact--item">
+                        <ion-icon name="time"></ion-icon>
+                        <span>
+                            Mon - Sat 8:00 - 6:30, Sunday - CLOSED
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- end headerContact -->
+
+    <!-- header -->
+    <div class="wrapper" id="wrapper__header">
+        <div class="slider__box">
+            <div class="indicators " style="display: none;">
+                <span id="btn__baner1" class="active"></span>
+                <span id="btn__baner2"></span>
+                <span id="btn__baner3"></span>
+            </div>
+        </div>
+        <div class="header__box">
+            <div class="header__navbar container">
+                <nav id="navbar">
+                    <a class="logo text-decoration-none" href="#">TRUYENHAY</a>
+                    <ul class="menu" id="side__bar">
+                        <li><a href="#" class="text_menu menu_parent text-decoration-none">Trang chủ</a></li>
+                        <li class="menu_parent">
+                            <a href="#types" class="text_menu text-decoration-none">Thể loại</a>
+                            <ul class="menu_child">
+                                <li>
+                                    <a class="text_menuchild text-decoration-none" href="">Phiêu lưu</a>
+                                </li>
+                                <li>
+                                    <a href="" class="text_menuchild text-decoration-none">Tình cảm</a>
+                                </li>
+                                <li>
+                                    <a href="" class="text_menuchild text-decoration-none">Dân gian</a>
+                                </li>
+                                <li>
+                                    <a href="" class="text_menuchild text-decoration-none">Gia đình</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_parent">
+                            <a href="#category" class="text_menu text-decoration-none">Danh mục</a>
+                            <ul class="menu_child">
+                                <li>
+                                    <a class="text_menuchild text-decoration-none" href="">Phiêu lưu</a>
+                                </li>
+                                <li>
+                                    <a href="" class="text_menuchild text-decoration-none">Tình cảm</a>
+                                </li>
+                                <li>
+                                    <a href="" class="text_menuchild text-decoration-none">Dân gian</a>
+                                </li>
+                                <li>
+                                    <a href="" class="text_menuchild text-decoration-none">Gia đình</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#teens" class="text_menu text-decoration-none">Truyện teen</a></li>
+                        <li><a href="#vips" class="text_menu text-decoration-none">Truyện VIP</a></li>
+                        <li class="menu__tool">
+                            <div class="tool">
+                                <a href="#" class="tool__item">
+                                    <ion-icon name="search-outline"></ion-icon>
+                                </a>
+                                <a class="user" href="#">
+                                    <img src="https://img.icons8.com/windows/32/ffffff/user.png" />
+                                </a>
+                                <a class="logout" href="#">
+                                    <img src="https://img.icons8.com/ios-filled/25/ffffff/logout-rounded.png" />
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="icon" id="menu__btn">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+                    <div class="tool">
+                        <a href="#" class="tool__item">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="user tool">
+                        <a class="nav-link user icon-menu">
+                            <img src="https://img.icons8.com/windows/32/ffffff/user.png" />
+                        </a>
+                    </div>
+                    <div class="login tool">
+                        <a class="nav-link logout icon-menu">
+                            <img src="https://img.icons8.com/ios-filled/25/ffffff/logout-rounded.png" />
+                        </a>
+                    </div>
+                </nav>
+            </div>
+            <hr>
+
+        </div>
+    </div>
+    <!-- end header -->
+    <div class="wrapper bgmenu"></div>
+
+    <!-- main -->
+    <div class="wrapper main-detail">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 p-4">
+                <img class="img-thumbnail rounded mx-auto d-block" src="./static/image/img_anime/<%= story.image %>"
+                    alt="">
+            </div>
+            <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 p-4">
+                <div>
+                    <p class="name-story-detail text-center">
+                        <%= story.name %>
+                    </p>
+                    <hr>
+                    <div class="rate-detail d-flex justify-content-center">
+                        <div class="star-detail">
+                            <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png" />
+                            <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png" />
+                            <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png" />
+                            <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png" />
+                            <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png" />
+                        </div>
+                        <div class="inf-rate-detail">
+                            <i>Đánh giá: <strong> 8</strong>/10 từ <strong>65</strong> lượt bình chọn</i>
+                        </div>
+                    </div>
+                    <div class="category-detail">
+                        <strong>Thể loại</strong> : <%= story.category %>
+                    </div>
+                    <div class="author-detail">
+                        <strong>Tác giả</strong> : <%= story.author%>
+                    </div>
+                    <div class="description-detail">
+                        <strong>Tóm tắt </strong> :
+                        <span class="description-detail-text">
+                            <%= story.content %>*100
+
+                        </span>
+                        <a class="continue-detail">
+                            đọc tiếp
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary btn-md  mt-4 mb-5 ">Đọc truyện</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="alert alert-secondary ml-5 mr-5 comment-top" role="alert">
+            Bình luận
+        </div>
+
+        <div class="comment-detail ml-5 mr-5">
+            <div class=" ">
+                <strong class="user-comment-detail">Thành Đạt :</strong>
+                <p>Truyện này hay lắm mọi người nên đọc nha!</p>
+                <hr>
+            </div>
+            <div class=" ">
+                <strong class="user-comment-detail">Nguyễn Trang :</strong>
+                <p>Truyện dài quá mọi người ơi bao giờ mới ra tập mới vaajyyyyy ?</p>
+                <hr>
+            </div>
+            <div class=" ">
+                <strong class="user-comment-detail">Minh An :</strong>
+                <p>Kết buồn thật mọi người xem mà cười hahahahahahahah luôn ấy :( </p>
+                <hr>
+            </div>
+
+            <div class="d-flex">
+                <textarea class="p-3" name="" placeholder="Nhập bình luận" id="" cols="170" rows="1"></textarea>
+                <button type="button" class="btn btn-primary ml-3">Đăng</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- end main -->
+
+    <section id="custumer" class="wrapper">
+        <div class="slider__box container">
+            <div class="indicators">
+                <span id="btn__custumer1" class="active"></span>
+                <span id="btn__custumer2"></span>
+                <span id="btn__custumer3"></span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer -->
+    <section id="footer" class="wrapper">
+        <div class="footer__img">
+            <img src="./static/image/img/bannerfooter.png" alt="banner">
+        </div>
+        <div class="footer__blur"></div>
+        <div class="footer__box container">
+            <div class="footer__about">
+                <h4>About</h4>
+                <div class="footer__about--content">
+                    <p>Cung cấp các câu chuyện Nhật Bản vô cùng bổ ích với hình ảnh tuyệt đẹp</p>
+                    <a href="#" class="btn footer__about--btn">Gửi yêu cầu</a>
+                </div>
+            </div>
+            <div class="footer__link">
+                <h4>Đường dẫn</h4>
+                <ul class="footer__link--menu">
+                    <li><a href="#" class="text-decoration-none">Về chúng tôi</a></li>
+                    <li><a href="#" class="text-decoration-none">Tham gia với chúng tôi</a></li>
+                    <li><a href="#" class="text-decoration-none">
+                            Cải thiện</a></li>
+                    <li><a href="#" class="text-decoration-none">Dự án của chúng tôi</a></li>
+                    <li><a href="#" class="text-decoration-none">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer__contact">
+                <h4>Liên hệ</h4>
+                <ul class="footer__contact--menu">
+                    <li>
+                        <ion-icon name="location"></ion-icon>
+                        <a href="#" class="text-decoration-none">
+                            38 ngõ 2 Nguyên Xá Nam Từ Liêm Hà Nội
+                        </a>
+                    </li>
+                    <li>
+                        <ion-icon name="time"></ion-icon><a href="#" class="text-decoration-none">
+                            Thứ hai - Thứ bảy 8:00 - 17:30, Chủ Nhật - CLOSED
+                        </a>
+                    </li>
+                    <li>
+                        <ion-icon name="mail"></ion-icon><a href="#" class="text-decoration-none">
+                            truyenhay@company.com
+                        </a>
+                    </li>
+                    <li>
+                        <ion-icon name="call"></ion-icon>
+                        <a href="#" class="text-decoration-none">
+                            18001000
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__letter">
+                <h4>Hộp thư tay</h4>
+                <div class="footer__letter--contact">
+                    <p>Có hay không có đừng tìm</p>
+                    <div class="footer__email--submit">
+                        <form action="#" method="GET" id="message">
+                            <input type="email" name='email' id="email" placeholder="Email Address">
+                        </form>
+                        <button type="submit" form="message" value="Submit">
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="footer__letter--socical">
+                        <a href="#" class="socical__icon">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#" class="socical__icon">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a href="#" class="socical__icon">
+                            <ion-icon name="logo-pinterest"></ion-icon>
+                        </a>
+                        <a href="#" class="socical__icon">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end footer -->
+
+    <!--  copyright -->
+    <section id="copyright" class="wrapper">
+        <div class="copyright__blur"></div>
+        <div class="copyright__box container">
+            <div class="copyright__left">
+                <p>&copy; Bản quyền thuộc về nhóm 9 K15 <span>Thực tập cơ sở ngành</span>
+                </p>
+            </div>
+            <div class="copyright__right">
+                <a href="#">Bảo mật /</a>
+                <a href="#">Chính sách /</a>
+                <a href="#">Map</a>
+            </div>
+        </div>
+    </section>
+    <!-- end copyright -->
+
+    <!-- detail -->
+    <script src="./static/js/detail.js"></script>
+    <!-- home -->
+    <script src="./static/js/home.js"></script>
+    <!-- jQuery -->
+    <script src="./static/js/jquery-1.11.1.min.js"></script>
+    <!-- Owl carosel -->
+    <script src="./plugins/owlcarousel/owl.carousel.min.js"></script>
+</body>
+
+</html>

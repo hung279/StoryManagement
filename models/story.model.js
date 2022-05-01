@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const storySchema = mongoose.Schema(
   {
@@ -13,9 +14,16 @@ const storySchema = mongoose.Schema(
     chapter: {
       type: String,
     },
+    slug: {
+      type: String,
+    },
     introduce: {
       type: String,
       required: [true, "Giới thiệu là trường bắt buộc"],
+    },
+    content: {
+      type: String,
+      required: [true, "Noi dung la truong bat buoc"],
     },
     author: {
       type: String,
@@ -40,6 +48,11 @@ const storySchema = mongoose.Schema(
     timestamp: true,
   }
 );
+
+storySchema.pre("save", function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
 
 const Story = mongoose.model("Story", storySchema);
 

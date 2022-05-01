@@ -1,0 +1,11 @@
+.story-detail {
+    box-shadow: 2px 2px 15px 5px rgb(224, 224, 224);
+    background-color: white;
+    padding: 20px;
+}
+
+.bgmenu {
+    background-color: black;
+    height: 70px;
+    opacity: 0.9;
+}

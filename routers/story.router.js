@@ -3,15 +3,27 @@ const router = require("express").Router();
 const storyController = require("../controllers/story.controller");
 const authMiddleware = require("../middlewares/auth");
 
-router.route("/storys").get(storyController.getStorys);
-
-router.use(authMiddleware.protect, authMiddleware.rolesAllowed("admin"));
-
-router.route("/storys").post(storyController.getStorys);
+router.route("/").get(storyController.getStorys);
 
 router
-  .route("/storys/:id")
-  .put(storyController.updateStory)
-  .delete(storyController.deleteStory);
+  .route("/")
+  .post(
+    authMiddleware.protect,
+    authMiddleware.rolesAllowed("admin"),
+    storyController.addStory
+  );
+
+router
+  .route("/:id")
+  .put(
+    authMiddleware.protect,
+    authMiddleware.rolesAllowed("admin"),
+    storyController.updateStory
+  )
+  .delete(
+    authMiddleware.protect,
+    authMiddleware.rolesAllowed("admin"),
+    storyController.deleteStory
+  );
 
 module.exports = router;
