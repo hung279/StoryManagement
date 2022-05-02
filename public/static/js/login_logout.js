@@ -121,24 +121,30 @@ $(function () {
 });
 
 $('.login').click(function () {
+    console.log("ddang o day");
     let username = $('.username').val();
     let password = $('.password').val();
     let regexUser = /^[A-Za-z0-9_\.]{6,32}$/;  /*- Chứa các ký tự A đến Z, a đến z, 0-9 dấu .  và dấu gạch dưới Độ dài 6 đến 32 ký tự */
     let regexPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; /* Tối thiểu sáu ký tự, ít nhất một chữ cái và một số: */
-    let check1 = regexUser.test(username);
-    let check2 = regexPass.test(password);
+    // let check1 = regexUser.test(username);
+    // let check2 = regexPass.test(password);
+    let check1 = true;
+    let check2 = true;
     if (check1 && check2) {
+        console.log("check xong");
         $('.alert').attr("style", "display:none");
         $.ajax({
             type: "POST",
-            url: '../login/check',
+            url: 'http://localhost:3000/auth/login',
             dataType: "JSON",
             data: { username, password },
             success: function (res) {
-                if (res.res == true) {
-                    let user = [{ "id": res.userDB.id }, { "username": res.userDB.user_name }, { "name": res.userDB.name }, { "email": res.userDB.email }, { "phone": res.userDB.phone }]
-                    localStorage.setItem('user', JSON.stringify(user));
-                    location.replace('/home');
+                console.log(res.token);
+                if (res.token) {
+                    console.log("Da dn dc");
+                    // let user = [{ "id": res.userDB.id }, { "username": res.userDB.user_name }, { "name": res.userDB.name }, { "email": res.userDB.email }, { "phone": res.userDB.phone }]
+                    // localStorage.setItem('user', JSON.stringify(user));
+                    //location.replace('/');
                 }
                 else {
                     console.log('check', 'mật khẩu sai');
@@ -173,7 +179,7 @@ $('.register').click(function () {
         console.log('pass', repass);
         $.ajax({
             type: "POST",
-            url: 'http://localhost:3000/register',
+            url: 'http://localhost:3000/auth/register',
             data: { user, repass },
             dataType: "JSON",
             success: function (res) {

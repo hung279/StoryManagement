@@ -18,10 +18,12 @@ module.exports = {
   
     const user = await User.findOne({ username });
   
-    if (!user || !user.password)
+    if (!user || !(await user.isPasswordMatch(password)))
       return next(new AppError("Tài khoản hoặc mật khẩu không hợp lệ", 401));
   
     const token = signToken(user._id);
+    
+    res.cookie('token', token, { signed: true });
     res.status(200).json({ status: "success", token });
   }),
 

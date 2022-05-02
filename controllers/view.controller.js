@@ -15,4 +15,7 @@ module.exports = {
             story: story
         })
     }),
+    login: catchAsync(async (req, res, next) => {
+        res.render("login-signup");
+    })
 }

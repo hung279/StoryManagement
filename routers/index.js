@@ -6,10 +6,6 @@ const authRouter = require("./auth.router");
 
 const routes = [
   {
-    path: "/auth",
-    route: authRouter,
-  },
-  {
     path: "/users",
     route: userRouter,
   },
