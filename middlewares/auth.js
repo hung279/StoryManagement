@@ -5,11 +5,12 @@ const AppError = require("../utils/appError");
 
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
-  let token;
-  if (req.headers.authorization?.startsWith("Bearer")) {
-    token = req.headers.authorization.split(" ")[1];
-  }
-
+  let token = req.signedCookies?.token;
+  console.log(req.signedCookies?.token);
+  // if (req.headers.authorization?.startsWith("Bearer")) {
+  //   token = req.headers.authorization.split(" ")[1];
+  // }
+  
   if (!token) {
     return next(new AppError("Token không tồn tại", 401));
   }

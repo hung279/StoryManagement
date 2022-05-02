@@ -144,7 +144,7 @@ $('.login').click(function () {
                     console.log("Da dn dc");
                     // let user = [{ "id": res.userDB.id }, { "username": res.userDB.user_name }, { "name": res.userDB.name }, { "email": res.userDB.email }, { "phone": res.userDB.phone }]
                     // localStorage.setItem('user', JSON.stringify(user));
-                    //location.replace('/');
+                    location.replace('/');
                 }
                 else {
                     console.log('check', 'mật khẩu sai');
