@@ -139,18 +139,20 @@ $('.login').click(function () {
             dataType: "JSON",
             data: { username, password },
             success: function (res) {
+                console.log(res);
                 console.log(res.token);
+                console.log("vao day r");
                 if (res.token) {
                     console.log("Da dn dc");
                     // let user = [{ "id": res.userDB.id }, { "username": res.userDB.user_name }, { "name": res.userDB.name }, { "email": res.userDB.email }, { "phone": res.userDB.phone }]
                     // localStorage.setItem('user', JSON.stringify(user));
-                    location.replace('/');
+                    //location.replace('/');
                 }
-                else {
-                    console.log('check', 'mật khẩu sai');
-                    $('.alert').attr("style", "display:block");
-                    $('.alert').text("Username or Password is wrong");
-                }
+            },
+            error: function () {
+                console.log('check', 'mật khẩu sai');
+                $('.alert').attr("style", "display:block");
+                $('.alert').text("Username or Password is wrong");
             }
         });
     } else {
@@ -183,14 +185,17 @@ $('.register').click(function () {
             data: { user, repass },
             dataType: "JSON",
             success: function (res) {
-                if (res.res == true) {
+                if (res) {
                     $('.content-modal').html(' Successfully created');
-                    console.log('check', res.res)
+                    console.log('check', res)
                 }
                 else {
                     console.log('check', 'tồn tại user');
                     $('.content-modal').html('Username already exists')
                 }
+            },
+            error: function () {
+                
             }
         });
 
