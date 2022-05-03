@@ -162,29 +162,33 @@ $('.login').click(function () {
 
 })
 $('.register').click(function () {
-    let user = $('.user-register').val();
-    let pass = $('.pass-register').val();
+    let full_name = $('.user-register').val();
+    let email = $('.user-register').val();
+    let username = $('.user-register').val();
+    let password = $('.pass-register').val();
     let repass = $('.repass-register').val();
     let regexUser = /^[A-Za-z0-9_\.]{6,32}$/;  /*- Chứa các ký tự A đến Z, a đến z, 0-9 dấu .  và dấu gạch dưới Độ dài 6 đến 32 ký tự */
     let regexPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; /* Tối thiểu sáu ký tự, ít nhất một chữ cái và một số: */
-    let check1 = regexUser.test(user);
-    let check2 = regexPass.test(repass);
+    let check1 = regexUser.test(username);
+    let check2 = regexPass.test(password);
     let check3;
-    if (pass == repass) {
+    if (password == repass) {
         check3 = true;
     } else {
         check3 = false;
     }
     if (check1 && check2 && check3) {
+        console.log("check dk xong");
         $('.content-modal').html('Checking...');
-        console.log('user', user);
-        console.log('pass', repass);
+        console.log('user', username);
+        console.log('pass', password);
         $.ajax({
             type: "POST",
             url: 'http://localhost:3000/auth/register',
-            data: { user, repass },
+            data: { full_name, email, username, password },
             dataType: "JSON",
             success: function (res) {
+                console.log("Dk thanh cong");
                 if (res) {
                     $('.content-modal').html(' Successfully created');
                     console.log('check', res)
@@ -195,7 +199,7 @@ $('.register').click(function () {
                 }
             },
             error: function () {
-                
+                console.log("loi nay");
             }
         });
 

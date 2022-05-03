@@ -35,9 +35,8 @@ module.exports = {
       password: req.body.password,
       password_confirm: req.body.password_confirm,
     });
-  
     
-    res.status(201).json({ status: "success", newUser });
+    res.status(201).json({ status: "success" });
   }),
 
   forgetPassword: catchAsync(async (req, res, next) => {
