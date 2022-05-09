@@ -8,8 +8,8 @@ router.route("/").get(storyController.getStorys);
 router
   .route("/")
   .post(
-    authMiddleware.protect,
-    authMiddleware.rolesAllowed("admin"),
+    // authMiddleware.protect,
+    // authMiddleware.rolesAllowed("admin"),
     storyController.addStory
   );
 

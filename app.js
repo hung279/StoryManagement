@@ -4,9 +4,11 @@ const dotenv = require("dotenv");
 const AppError = require("./utils/appError");
 const errorHandler = require("./middlewares/errorHandle");
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const path = require("path");
 
 dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
  
@@ -21,7 +23,7 @@ mongoose
 
   app.set('view engine', 'ejs');
   app.set('views', './views');
-  
+  app.use(cors());
   app.use(cookieParser('hung'));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));

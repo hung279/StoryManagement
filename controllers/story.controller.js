@@ -12,7 +12,7 @@ const storyController = {
 
   addStory: catchAsync(async (req, res, next) => {
     const newStory = await Story.create(req.body);
-
+    
     res.status(201).json({ status: "success", data: newStory });
   }),
 

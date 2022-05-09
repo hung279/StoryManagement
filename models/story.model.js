@@ -7,7 +7,7 @@ const storySchema = mongoose.Schema(
       type: String,
       required: [true, "Tên truyện là trường bắt buộc"],
     },
-    image: {
+    thumbnail: {
       type: String,
       required: [true, "Ảnh bìa truyện là trường bắt buộc"],
     },
@@ -29,20 +29,16 @@ const storySchema = mongoose.Schema(
       type: String,
       required: [true, "Tác giả là trường bắt buộc"],
     },
-    released: {
-      type: Date,
-      required: [true, "Thời gian phát hành là trường bắt buộc"],
-    },
     category: {
       type: String,
       required: [true, "Thể loại là trường bắt buộc"],
     },
-    rating: {
-      type: Number,
-      default: 0,
-      min: [1, "Đánh giá từ 1 -> 5"],
-      max: [5, "Đánh giá từ 1 -> 5"],
-    },
+    // rating: {
+    //   type: Number,
+    //   default: 0,
+    //   min: [1, "Đánh giá từ 1 -> 5"],
+    //   max: [5, "Đánh giá từ 1 -> 5"],
+    // },
   },
   {
     timestamp: true,

@@ -11,10 +11,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Email là trường bắt buộc"],
       trim: true,
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        "Sai định dạng email",
-      ],
+      // match: [
+      //   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      //   "Sai định dạng email",
+      // ],
     },
     username: {
       type: String,
