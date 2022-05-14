@@ -31,11 +31,13 @@ mongoose
   
 
 const router = require("./routers/index");
-const viewRoter = require("./routers/view.router");
-const authRoter = require("./routers/auth.router");
+const viewRouter = require("./routers/view.router");
+const adminRouter = require("./routers/admin.router");
+const authRouter = require("./routers/auth.router");
 
-app.use("/", viewRoter);
-app.use("/auth", authRoter);
+app.use("/", viewRouter);
+app.use("/admin", adminRouter);
+app.use("/auth", authRouter);
 app.use("/api", router);
 
 app.use("*", (req, res, next) => {

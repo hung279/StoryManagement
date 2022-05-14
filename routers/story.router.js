@@ -15,9 +15,9 @@ router
 
 router
   .route("/:id")
-  .put(
-    authMiddleware.protect,
-    authMiddleware.rolesAllowed("admin"),
+  .patch(
+    // authMiddleware.protect,
+    // authMiddleware.rolesAllowed("admin"),
     storyController.updateStory
   )
   .delete(
