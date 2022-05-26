@@ -1,37 +1,47 @@
+const httpStatus = require("http-status");
 const User = require("../models/user.model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const { userService } = require("../services");
 
-const userController = {
-  addUser: catchAsync(async (req, res, next) => {
-    const newUser = await User.create(req.body);
+const addUser = catchAsync(async (req, res, next) => {
+  const newUser = await userService.createUser(req.body);
 
-    res.status(201).json({ status: "success", data: newUser });
-  }),
+  res.status(httpStatus.CREATED).json({ status: "success", data: newUser });
+});
 
-  getUsers: catchAsync(async (req, res, next) => {
-    const users = await User.find();
+const getUsers = catchAsync(async (req, res, next) => {
+  const users = await User.find();
 
-    res.status(200).json({ status: "success", data: users });
-  }),
+  res.status(httpStatus.OK).json({ status: "success", data: users });
+});
 
-  updateUsers: catchAsync(async (req, res, next) => {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      runValidators: true,
-    });
+const getUser = catchAsync(async (req, res) => {
+  const user = await userService.getUserById(req.params.userId);
 
-    if (!user) return next(new AppError("User không tồn tại", 404));
+  res.status(httpStatus.OK).json({ status: "success", data: user });
+});
 
-    res.status(200).json({ status: "success", message: "update thành công" });
-  }),
+const updateUser = catchAsync(async (req, res, next) => {
+  const user = await userService.updateUserById(req.userId, req.body);
 
-  deleteUsers: catchAsync(async (req, res, next) => {
-    const user = await User.findByIdAndDelete(req.params.id);
+  res
+    .status(httpStatus.OK)
+    .json({ status: "success", message: "update thành công" });
+});
 
-    if (!user) return next(new AppError("User không tồn tại", 404));
+const deleteUser = catchAsync(async (req, res, next) => {
+  const user = await userService.deleteUserById(req.params.id);
 
-    res.status(200).json({ status: "success", message: "delete thành công" });
-  }),
+  res
+    .status(httpStatus.OK)
+    .json({ status: "success", message: "delete thành công" });
+});
+
+module.exports = {
+  addUser,
+  getUsers,
+  getUser,
+  updateUser,
+  deleteUser,
 };
-
-module.exports = userController;

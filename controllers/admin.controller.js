@@ -8,10 +8,7 @@ module.exports = {
   }),
 
   login: catchAsync(async (req, res, next) => {
-    if (!req.signedCookies.token) {
-        return res.render("admin/login");
-    }
-    res.redirect("/admin");
+    res.redirect("/login");
   }),
 
   managePage: catchAsync(async (req, res, next) => {
