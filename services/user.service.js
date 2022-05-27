@@ -30,9 +30,16 @@ const deleteUserById = async (userId) => {
   return user;
 };
 
+const getUserByUsername = async (username) => {
+  const user = User.findOne({ username });
+
+  return user;
+};
+
 module.exports = {
   createUser,
   getUserById,
   updateUserById,
   deleteUserById,
+  getUserByUsername,
 };

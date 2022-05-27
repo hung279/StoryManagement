@@ -2,26 +2,12 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
-
-const signToken = (id) => {
-  return jwt.sign({ id }, "hung123", {
-    expiresIn: "30m",
-  });
-};
+const authService = require("../services/auth.service");
 
 module.exports = {
   login: catchAsync(async (req, res, next) => {
     const { username, password } = req.body;
-  
-    if (!username || !password)
-      return next(new AppError("Tài khoản hoặc mật khẩu chưa được nhập", 400));
-  
-    const user = await User.findOne({ username });
-  
-    if (!user || !(await user.isPasswordMatch(password)))
-      return next(new AppError("Tài khoản hoặc mật khẩu không hợp lệ", 401));
-  
-    const token = signToken(user._id);
+    const token = await authService.login(username, password);
     
     res.cookie('token', token, { signed: true });
     res.status(200).json({ status: "success", token });
