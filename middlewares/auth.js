@@ -4,8 +4,8 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 exports.protect = catchAsync(async (req, res, next) => {
-  let tokens = req.signedCookies?.tokens;
-
+  let tokens = req.signedCookies?.token;
+  console.log(tokens);
   if (!req.originalUrl.includes("/api") && !tokens) {
     return res.redirect("/admin/login");
   }
@@ -14,9 +14,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     return next(new Error("Cookie không tìm thấy"));
   }
 
-  let { access } = tokens;
-
-  const payload = jwt.verify(access.token, config.jwt.secret);
+  const payload = jwt.verify(tokens, "hung123");
 
   if (payload) {
     req.userId = payload.sub;

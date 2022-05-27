@@ -8,7 +8,7 @@ module.exports = {
   }),
 
   login: catchAsync(async (req, res, next) => {
-    res.redirect("/login");
+    res.render("admin/login");
   }),
 
   managePage: catchAsync(async (req, res, next) => {

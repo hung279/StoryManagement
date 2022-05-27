@@ -12,7 +12,7 @@ router
 
 router
   .route("/:id")
-  .put(authMiddleware.protect, userController.updateUsers)
-  .delete(authMiddleware.protect, userController.deleteUsers);
+  .put(authMiddleware.protect, userController.updateUser)
+  .delete(authMiddleware.protect, userController.deleteUser);
 
 module.exports = router;
