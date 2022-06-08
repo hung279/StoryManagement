@@ -3,7 +3,7 @@ const router = require("express").Router();
 const storyController = require("../controllers/story.controller");
 const authMiddleware = require("../middlewares/auth");
 
-router.route("/").get(storyController.getStorys);
+router.route("/").get(storyController.getStories);
 
 router
   .route("/")

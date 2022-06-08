@@ -414,11 +414,13 @@
     <script>
         function getStorys() {
             const myTable = $('#my-table').DataTable({
+                processing: true,
+                serverSide: true,
                 ajax: {
                     type: 'GET',
                     url: 'http://localhost:3000/api/stories',
                     dataSrc: function (json) {
-                        return json.data;
+                        return json.aaData;
                     },
                 },
                 columns: [

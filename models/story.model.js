@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { toJSON } = require('./plugins');
+const { paginate } = require('./plugins');
 const slugify = require("slugify");
 
 const storySchema = mongoose.Schema(
@@ -44,6 +46,10 @@ const storySchema = mongoose.Schema(
     timestamp: true,
   }
 );
+
+// add plugin that converts mongoose to json
+storySchema.plugin(toJSON);
+storySchema.plugin(paginate);
 
 storySchema.pre("save", function (next) {
   this.slug = slugify(this.name, { lower: true });

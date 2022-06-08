@@ -1,4 +1,5 @@
 const httpStatus = require("http-status");
+const pick = require("../utils/pick");
 const User = require("../models/user.model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
@@ -11,9 +12,11 @@ const addUser = catchAsync(async (req, res, next) => {
 });
 
 const getUsers = catchAsync(async (req, res, next) => {
-  const users = await User.find();
+  const filter = pick(req.query, ["name", "role"]);
+  const options = pick(req.query, ["sortBy", "limit", "page"]);
+  const users = await userService.queryUsers(filter, options);
 
-  res.status(httpStatus.OK).json({ status: "success", data: users });
+  res.status(httpStatus.OK).json(users);
 });
 
 const getUser = catchAsync(async (req, res) => {

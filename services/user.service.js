@@ -2,6 +2,11 @@ const httpStatus = require("http-status");
 const User = require("../models/user.model");
 const AppError = require("../utils/appError");
 
+const queryUsers = async (filter, options) => {
+  const users = await User.paginate(filter, options);
+  return users;
+};
+
 const createUser = async (userBody) => {
   return User.create(userBody);
 };
@@ -37,6 +42,7 @@ const getUserByUsername = async (username) => {
 };
 
 module.exports = {
+  queryUsers,
   createUser,
   getUserById,
   updateUserById,

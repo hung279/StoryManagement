@@ -7,7 +7,7 @@ router
   .route("/")
   .post(userController.addUser)
   .get(
-    authMiddleware.protect,
+    //authMiddleware.protect,
     userController.getUsers);
 
 router

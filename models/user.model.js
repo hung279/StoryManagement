@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { toJSON } = require('./plugins');
+const { paginate } = require('./plugins');
 const bcrypt = require("bcrypt");
 
 const userSchema = mongoose.Schema(
@@ -42,6 +44,10 @@ const userSchema = mongoose.Schema(
     timestamp: true,
   }
 );
+
+// add plugin that converts mongoose to json
+userSchema.plugin(toJSON);
+userSchema.plugin(paginate);
 
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
