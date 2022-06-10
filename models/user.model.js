@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { toJSON } = require('./plugins');
 const { paginate } = require('./plugins');
 const bcrypt = require("bcrypt");
+const validator = require("validator");
 
 const userSchema = mongoose.Schema(
   {
@@ -59,6 +60,10 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.isPasswordMatch = async function(password) {
   return bcrypt.compare(password, this.password);
 }
+
+userSchema.statics.isEmail = function (email) {
+  return validator.isEmail(email);
+};
 
 const User = mongoose.model("User", userSchema);
 

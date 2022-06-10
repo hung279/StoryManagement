@@ -14,7 +14,7 @@ router
   );
 
 router
-  .route("/:id")
+  .route("/:storyId")
   .patch(
     // authMiddleware.protect,
     // authMiddleware.rolesAllowed("admin"),
@@ -22,7 +22,7 @@ router
   )
   .delete(
     authMiddleware.protect,
-    authMiddleware.rolesAllowed("admin"),
+    // authMiddleware.rolesAllowed("admin"),
     storyController.deleteStory
   );
 

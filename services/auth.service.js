@@ -1,74 +1,102 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
-const catchAsync = require("../utils/catchAsync");
-const AppError = require("../utils/appError");
-const userService = require("./user.service");
+const httpStatus = require('http-status');
+const tokenService = require('./token.service');
+const userService = require('./user.service');
+const Token = require('../models/token.model');
+const AppError = require('../utils/appError');
+const { tokenTypes } = require('../config/tokens');
 
-const signToken = (id) => {
-  return jwt.sign({ id }, "hung123", {
-    expiresIn: "30m",
-  });
+/**
+ * Login with username and password
+ * @param {string} email
+ * @param {string} password
+ * @returns {Promise<User>}
+ */
+ const loginUserWithUsernameAndPassword = async (username, password) => {
+  const user = await userService.getUserByUsernameOrEmail(username);
+  if (!user || !(await user.isPasswordMatch(password))) {
+    throw new AppError(
+      httpStatus.UNAUTHORIZED,
+      "Sai username hoac email hoặc mật khẩu"
+    );
+  }
+  return user;
+};
+
+/**
+ * Logout
+ * @param {string} refreshToken
+ * @returns {Promise}
+ */
+const logout = async (refreshToken) => {
+  const refreshTokenDoc = await Token.findOne({ token: refreshToken, type: tokenTypes.REFRESH, blacklisted: false });
+  if (!refreshTokenDoc) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Not found');
+  }
+  await refreshTokenDoc.remove();
+};
+
+/**
+ * Refresh auth tokens
+ * @param {string} refreshToken
+ * @returns {Promise<Object>}
+ */
+const refreshAuth = async (refreshToken) => {
+  try {
+    const refreshTokenDoc = await tokenService.verifyToken(refreshToken, tokenTypes.REFRESH);
+    const user = await userService.getUserById(refreshTokenDoc.user);
+    if (!user) {
+      throw new Error();
+    }
+    await refreshTokenDoc.remove();
+    return tokenService.generateAuthTokens(user);
+  } catch (error) {
+    throw new AppError(httpStatus.UNAUTHORIZED, 'Please authenticate');
+  }
+};
+
+/**
+ * Reset password
+ * @param {string} resetPasswordToken
+ * @param {string} newPassword
+ * @returns {Promise}
+ */
+const resetPassword = async (resetPasswordToken, newPassword) => {
+  try {
+    const resetPasswordTokenDoc = await tokenService.verifyToken(resetPasswordToken, tokenTypes.RESET_PASSWORD);
+    const user = await userService.getUserById(resetPasswordTokenDoc.user);
+    if (!user) {
+      throw new Error();
+    }
+    await userService.updateUserById(user.id, { password: newPassword });
+    await Token.deleteMany({ user: user.id, type: tokenTypes.RESET_PASSWORD });
+  } catch (error) {
+    throw new AppError(httpStatus.UNAUTHORIZED, 'Password reset failed');
+  }
+};
+
+/**
+ * Verify email
+ * @param {string} verifyEmailToken
+ * @returns {Promise}
+ */
+const verifyEmail = async (verifyEmailToken) => {
+  try {
+    const verifyEmailTokenDoc = await tokenService.verifyToken(verifyEmailToken, tokenTypes.VERIFY_EMAIL);
+    const user = await userService.getUserById(verifyEmailTokenDoc.user);
+    if (!user) {
+      throw new Error();
+    }
+    await Token.deleteMany({ user: user.id, type: tokenTypes.VERIFY_EMAIL });
+    await userService.updateUserById(user.id, { isEmailVerified: true });
+  } catch (error) {
+    throw new AppError(httpStatus.UNAUTHORIZED, 'Email verification failed');
+  }
 };
 
 module.exports = {
-  login: async (username, password) => {
-    if (!username || !password)
-      return next(new AppError("Tài khoản hoặc mật khẩu chưa được nhập", 400));
-  
-    const user = await userService.getUserByUsername(username);
-  
-    if (!user || !(await user.isPasswordMatch(password)))
-      return next(new AppError("Tài khoản hoặc mật khẩu không hợp lệ", 401));
-  
-    const token = signToken(user._id);
-    
-    return token;
-  },
-
-//   signup: catchAsync(async (req, res, next) => {
-//     const newUser = await User.create({
-//       full_name: req.body.full_name,
-//       email: req.body.email,
-//       username: req.body.username,
-//       password: req.body.password,
-//       password_confirm: req.body.password_confirm,
-//     });
-    
-//     res.status(201).json({ status: "success" });
-//   }),
-
-//   forgetPassword: catchAsync(async (req, res, next) => {
-//     const user = await User.findOne({ username: req.body.username });
-  
-//     if (!user) {
-//       return next(new AppError("User không tồn tại", 404));
-//     }
-  
-//     const resetToken = user.createPasswordResetToken();
-//     await user.save({ validateBeforeSave: false });
-//     //req.protocol = http, req.get('host') = localhost:3000
-//     const resetURL = `${req.protocol}://${req.get(
-//       "host"
-//     )}/auth/reset-password/${resetToken}`;
-  
-//     res.status(200).json({ resetURL });
-//   }),
-  
-//   changePassword: catchAsync(async (req, res, next) => {
-//     const user = await User.findOne({
-//       passwordResetToken: req.params.resetToken,
-//       passwordResetExpires: { $gte: Date.now() },
-//     });
-  
-//     if (!user) {
-//       return next(new AppError("User not found", 400));
-//     }
-  
-//     user.password = req.body.password;
-//     user.passwordResetToken = undefined;
-//     user.passwordResetExpires = undefined;
-//     await user.save();
-  
-//     res.status(200).json({ message: "change successfully" });
-//   })
-}
+  loginUserWithUsernameAndPassword,
+  logout,
+  refreshAuth,
+  resetPassword,
+  verifyEmail,
+};

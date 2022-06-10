@@ -22,8 +22,7 @@ const getStoryById = async (id) => {
 const updateStoryById = async (storyId, updateBody) => {
   const story = await getStoryById(storyId);
 
-  Object.assign(story, updateBody);
-  await Story.save();
+  await Story.findByIdAndUpdate(storyId, updateBody);
 
   return story;
 };

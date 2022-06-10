@@ -5,7 +5,7 @@ const AppError = require("../utils/appError");
 
 exports.protect = catchAsync(async (req, res, next) => {
   let tokens = req.signedCookies?.token;
-  console.log(tokens);
+  
   if (!req.originalUrl.includes("/api") && !tokens) {
     return res.redirect("/admin/login");
   }
@@ -15,6 +15,10 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   const payload = jwt.verify(tokens, "hung123");
+  
+  if(payload.exp*1000 < Date.now()) {
+    return res.redirect("/admin/login");
+  }
 
   if (payload) {
     req.userId = payload.sub;

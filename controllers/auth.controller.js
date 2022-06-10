@@ -1,62 +1,74 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+const httpStatus = require("http-status");
 const catchAsync = require("../utils/catchAsync");
-const AppError = require("../utils/appError");
-const authService = require("../services/auth.service");
+const {
+  authService,
+  userService,
+  tokenService,
+  emailService,
+} = require("../services");
+
+const register = catchAsync(async (req, res) => {
+  const user = await userService.createUser(req.body);
+  const tokens = await tokenService.generateAuthTokens(user);
+  res.status(httpStatus.CREATED).send({ user, tokens });
+});
+
+const login = catchAsync(async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await authService.loginUserWithUsernameAndPassword(
+    username,
+    password
+  );
+  const tokens = await tokenService.generateAuthTokens(user);
+
+  res.cookie("tokens", tokens, { signed: true, httpOnly: true });
+  res.status(httpStatus.OK).json({user, tokens});
+});
+
+const logout = catchAsync(async (req, res) => {
+  await authService.logout(req.body.refreshToken);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
+const refreshTokens = catchAsync(async (req, res) => {
+  const tokens = await authService.refreshAuth(req.body.refreshToken);
+  res.send({ ...tokens });
+});
+
+const forgotPassword = catchAsync(async (req, res) => {
+  const resetPasswordToken = await tokenService.generateResetPasswordToken(
+    req.body.email
+  );
+  await emailService.sendResetPasswordEmail(req.body.email, resetPasswordToken);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
+const resetPassword = catchAsync(async (req, res) => {
+  await authService.resetPassword(req.query.token, req.body.password);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
+const sendVerificationEmail = catchAsync(async (req, res) => {
+  const verifyEmailToken = await tokenService.generateVerifyEmailToken(
+    req.user
+  );
+  await emailService.sendVerificationEmail(req.user.email, verifyEmailToken);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
+const verifyEmail = catchAsync(async (req, res) => {
+  await authService.verifyEmail(req.query.token);
+  res.status(httpStatus.NO_CONTENT).send();
+});
 
 module.exports = {
-  login: catchAsync(async (req, res, next) => {
-    const { username, password } = req.body;
-    const token = await authService.login(username, password);
-    
-    res.cookie('token', token, { signed: true });
-    res.status(200).json({ status: "success", token });
-  }),
-
-  signup: catchAsync(async (req, res, next) => {
-    const newUser = await User.create({
-      full_name: req.body.full_name,
-      email: req.body.email,
-      username: req.body.username,
-      password: req.body.password,
-      password_confirm: req.body.password_confirm,
-    });
-    
-    res.status(201).json({ status: "success" });
-  }),
-
-  forgetPassword: catchAsync(async (req, res, next) => {
-    const user = await User.findOne({ username: req.body.username });
-  
-    if (!user) {
-      return next(new AppError("User không tồn tại", 404));
-    }
-  
-    const resetToken = user.createPasswordResetToken();
-    await user.save({ validateBeforeSave: false });
-    //req.protocol = http, req.get('host') = localhost:3000
-    const resetURL = `${req.protocol}://${req.get(
-      "host"
-    )}/auth/reset-password/${resetToken}`;
-  
-    res.status(200).json({ resetURL });
-  }),
-  
-  changePassword: catchAsync(async (req, res, next) => {
-    const user = await User.findOne({
-      passwordResetToken: req.params.resetToken,
-      passwordResetExpires: { $gte: Date.now() },
-    });
-  
-    if (!user) {
-      return next(new AppError("User not found", 400));
-    }
-  
-    user.password = req.body.password;
-    user.passwordResetToken = undefined;
-    user.passwordResetExpires = undefined;
-    await user.save();
-  
-    res.status(200).json({ message: "change successfully" });
-  })
-}
+  register,
+  login,
+  logout,
+  refreshTokens,
+  forgotPassword,
+  resetPassword,
+  sendVerificationEmail,
+  verifyEmail,
+};
