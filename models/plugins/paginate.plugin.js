@@ -61,6 +61,7 @@ const paginate = (schema) => {
         limit,
         recordsTotal: totalResults,
         recordsFiltered: totalResults,
+        totalPages
       };
       return Promise.resolve(result);
     });

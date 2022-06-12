@@ -1,28 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Truyện hay</title>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,900&family=Cherish&family=Hind+Siliguri:wght@300;500&display=swap"
-        rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/client/static/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/client/static//favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/client/static//favicon/favicon-16x16.png">
-    <link rel="stylesheet" href="/client/static/css/home.css">
-    <!-- boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="/client/plugins/owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="/client/plugins/owlcarousel/assets/owl.theme.default.min.css">
-    <!-- jQuery -->
-    <script src="/client/static/js/jquery-1.11.1.min.js"></script>
+<%- include("./common/head.ejs")%>
 </head>
 
 <body>
@@ -45,7 +24,10 @@
                     </a>
                 </div>
                 <div class="header__top--title">
-                    <p>Welcome to Truyenhay Company. <a href="#" class="text-decoration-none">Get Free Quote</a></p>
+                    <p>
+                        Welcome to Truyenhay Company.
+                        <a href="#" class="text-decoration-none">Get Free Quote</a>
+                    </p>
                 </div>
                 <div class="header__contact">
                     <div class="header__contact--item">
@@ -54,9 +36,7 @@
                     </div>
                     <div class="header__contact--item">
                         <ion-icon name="time"></ion-icon>
-                        <span>
-                            Mon - Sat 8:00 - 6:30, Sunday - CLOSED
-                        </span>
+                        <span> Mon - Sat 8:00 - 6:30, Sunday - CLOSED </span>
                     </div>
                 </div>
             </section>
@@ -65,175 +45,26 @@
     <!-- end headerContact -->
 
     <!-- header -->
-    <div class="wrapper" id="wrapper__header">
-        <div class="slider__box">
-            <div id="silder__banner" class="owl-carousel banner-home">
-                <div class="item">
-                    <a href="">
-                        <img src="/client/static/image/img_anime/737487.png" alt="banner">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="">
-                        <img src="/client/static/image/img_anime/736462.png" alt="banner">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="">
-                        <img src="/client/static/image/img_anime/736460.png" alt="banner">
-                    </a>
-                </div>
-            </div>
-            <div class="indicators " style="display: none;">
-                <span id="btn__baner1" class="active"></span>
-                <span id="btn__baner2"></span>
-                <span id="btn__baner3"></span>
-            </div>
-        </div>
-        <div class="header__box">
-            <div class="header__navbar container">
-                <nav id="navbar">
-                    <a class="logo text-decoration-none" href="#">TRUYENHAY</a>
-                    <ul class="menu" id="side__bar">
-                        <li><a href="#" class="text_menu menu_parent text-decoration-none">Trang chủ</a></li>
-                        <li class="menu_parent">
-                            <a href="#types" class="text_menu text-decoration-none">Thể loại</a>
-                            <ul class="menu_child">
-                                <li>
-                                    <a class="text_menuchild text-decoration-none" href="">Phiêu lưu</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Tình cảm</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Dân gian</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Gia đình</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu_parent">
-                            <a href="#category" class="text_menu text-decoration-none">Danh mục</a>
-                            <ul class="menu_child">
-                                <li>
-                                    <a class="text_menuchild text-decoration-none" href="">Phiêu lưu</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Tình cảm</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Dân gian</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Gia đình</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#teens" class="text_menu text-decoration-none">Truyện teen</a></li>
-                        <li><a href="#vips" class="text_menu text-decoration-none">Truyện VIP</a></li>
-                        <li class="menu__tool">
-                            <div class="tool">
-                                <a href="#" class="tool__item">
-                                    <ion-icon name="search-outline"></ion-icon>
-                                </a>
-                                <a class="user" href="#">
-                                    <img src="https://img.icons8.com/windows/32/ffffff/user.png" />
-                                </a>
-                                <a class="logout" href="#">
-                                    <img src="https://img.icons8.com/ios-filled/25/ffffff/logout-rounded.png" />
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="icon" id="menu__btn">
-                        <ion-icon name="menu-outline"></ion-icon>
-                    </div>
-                    <div class="tool">
-                        <a href="#" class="tool__item">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </a>
-                    </div>
-                    <div class="user tool">
-                        <a class="nav-link user icon-menu">
-                            <img src="https://img.icons8.com/windows/32/ffffff/user.png" />
-                        </a>
-                    </div>
-                    <div class="login tool">
-                        <a class="nav-link logout icon-menu">
-                            <img src="https://img.icons8.com/ios-filled/25/ffffff/logout-rounded.png" />
-                        </a>
-                    </div>
-                </nav>
-            </div>
-            <hr>
-
-        </div>
-    </div>
+    <%- include("./common/header.ejs")%>
     <!-- end header -->
 
     <!-- renovate -->
     <section id="renovate" class="wrapper">
-        <img src="/client/static/image/img/banner5.jpg" alt="">
+        <img src="/client/static/image/img/banner5.jpg" alt="" />
         <div class="renovate__blur"></div>
         <div class="container renovate__box">
             <div class="renovate__content">
-                <h2>Truyện anime tuyển tập <br> Nói không với wibu</h2>
-                <p>"Lí tưởng là cuốn sách không có trật tự gì cả và người đọc phải tự khám phá ra cho mình."</p>
+                <h2>
+                    Truyện tuyển tập
+                </h2>
+                <p>
+                    "Lí tưởng là cuốn sách không có trật tự gì cả và người đọc phải tự
+                    khám phá ra cho mình."
+                </p>
             </div>
         </div>
     </section>
     <!-- end renovate -->
-
-    <!-- Introductions -->
-    <section id="introductions" class="wrapper">
-        <div class="container introductions__box">
-            <div class="introductions__content">
-                <div class="introductions__image">
-                    <div class="introductions__img--small introductions__circle"></div>
-                    <div class="introductions__image--box">
-                        <img src="/client/static/image/img_anime/banner_nezuko.jpg" alt="banner">
-                    </div>
-                    <div class="introductions__img--large introductions__circle"></div>
-                </div>
-                <div class="introductions__title text__title">
-                    <p class="introductions__title--header">Nhân vật hot</p>
-                    <h2>DEMON SLAYER: Kimetsu no Yaiba</h2>
-                    <p class="introductions__title--text">Thanh gươm diệt quỷ là một bộ manga Nhật Bản do Gotōge
-                        Koyoharu sáng tác và minh hoạ. Truyện kể về hành trình trở thành
-                        kiếm sĩ diệt quỷ của thiếu niên Kamado Tanjirō sau khi gia đình cậu bị quỷ sát hại và em gái
-                        Nezuko của cậu bị biến
-                        thành quỷ.</p>
-                    <div class="precent">
-                        <div class="precent__circle--box">
-                            <div>
-                                <svg class="precent__circle--left">
-                                    <circle r="47.5" cx="50" cy="50"></circle>
-                                    <circle class="precent__circle--main" r="47.5" cx="50" cy="50"></circle>
-                                </svg>
-                                <span>90%</span>
-                            </div>
-                            <strong>Đánh giá</strong>
-                        </div>
-                        <div class="precent__circle--box">
-                            <div>
-                                <svg class="precent__circle--right">
-                                    <circle r="47.5" cx="50" cy="50"></circle>
-                                    <circle r="47.5" cx="50" cy="50"></circle>
-                                </svg>
-                                <span>50%</span>
-                            </div>
-                            <strong>Số tập</strong>
-                        </div>
-                    </div>
-                    <div class="sign">
-                        <span><i>G</i>otouge<i>K</i>oyoharu</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end introductions -->
 
     <!-- product -->
     <section id="custumer" class="wrapper">
@@ -246,12 +77,12 @@
         </div>
 
         <div class="product">
-            <div class="all-product ">
-                <% stories.forEach((story)=> {%>
-                    <div class="card item_product" style="width: 15rem;">
-                        <a href="/stories/<%= story.slug %>" class=" text-decoration-none text-dark">
+            <div class="all-product">
+                <% stories.data.forEach((story)=> {%>
+                    <div class="card item_product" style="width: 15rem">
+                        <a href="/stories/<%= story.slug %>" class="text-decoration-none text-dark">
                             <img src="/client/static/image/img_anime/<%= story.thumbnail %>" class="card-img-top"
-                                alt="...">
+                                alt="..." />
                             <div class="card-body">
                                 <p class="card-text">
                                     <%= story.name%>
@@ -273,46 +104,86 @@
 
                     <% })%>
             </div>
-            <div class="row">
-                
+            <div class="d-flex justify-content-center">
+                <nav aria-label="Page navigation example">
+                    <% if (pages> 0) { %>
+                        <ul class="pagination">
+                            <% if (current==1) { %>
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <% } else { %>
+                                    <li class="page-item">
+                                        <a class="page-link" href="/?page=1" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <% } %>
+                                        <% var i=(Number(current)> 5 ? Number(current) - 4 : 1) %>
+                                            <% if (i !==1) { %>
+                                                <li class="page-item disabled"><a class="page-link">...</a></li>
+                                                <% } %>
+                                                    <% for (; i <=(Number(current) + 4) && i <=pages; i++) { %>
+                                                        <% if (i==current) { %>
+                                                            <li class="page-item active">
+                                                                <a class="page-link" href="#">
+                                                                    <%= i %>
+                                                                </a>
+                                                            </li>
+                                                            <% } else { %>
+                                                                <li class="page-item">
+                                                                    <a class="page-link" href="/?page=<%= i %>">
+                                                                        <%= i %>
+                                                                    </a>
+                                                                </li>
+                                                                <% } %>
+                                                                    <% if (i==Number(current) + 4 && i < pages) { %>
+                                                                        <li class="page-item disabled"><a
+                                                                                class="page-link">...</a></li>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                                                <% if (current==pages) { %>
+                                                                                    <li class="page-item disabled">
+                                                                                        <a class="page-link" href="#"
+                                                                                            aria-label="Next">
+                                                                                            <span
+                                                                                                aria-hidden="true">&raquo;</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <% } else { %>
+                                                                                        <li class="page-item">
+                                                                                            <a class="page-link"
+                                                                                                href="/?page=<%= current %>"
+                                                                                                aria-label="Next">
+                                                                                                <span
+                                                                                                    aria-hidden="true">&raquo;</span>
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <% } %>
+                        </ul>
+                        <% } %>
+                </nav>
             </div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-
         </div>
-
     </section>
     <!-- end product -->
 
     <!-- footer -->
     <section id="footer" class="wrapper">
         <div class="footer__img">
-            <img src="/client/static/image/img/bannerfooter.png" alt="banner">
+            <img src="/client/static/image/img/bannerfooter.png" alt="banner" />
         </div>
         <div class="footer__blur"></div>
         <div class="footer__box container">
             <div class="footer__about">
                 <h4>About</h4>
                 <div class="footer__about--content">
-                    <p>Cung cấp các câu chuyện Nhật Bản vô cùng bổ ích với hình ảnh tuyệt đẹp</p>
+                    <p>
+                        Cung cấp các câu chuyện Nhật Bản vô cùng bổ ích với hình ảnh tuyệt
+                        đẹp
+                    </p>
                     <a href="#" class="btn footer__about--btn">Gửi yêu cầu</a>
                 </div>
             </div>
@@ -320,10 +191,13 @@
                 <h4>Đường dẫn</h4>
                 <ul class="footer__link--menu">
                     <li><a href="#" class="text-decoration-none">Về chúng tôi</a></li>
-                    <li><a href="#" class="text-decoration-none">Tham gia với chúng tôi</a></li>
-                    <li><a href="#" class="text-decoration-none">
-                            Cải thiện</a></li>
-                    <li><a href="#" class="text-decoration-none">Dự án của chúng tôi</a></li>
+                    <li>
+                        <a href="#" class="text-decoration-none">Tham gia với chúng tôi</a>
+                    </li>
+                    <li><a href="#" class="text-decoration-none"> Cải thiện</a></li>
+                    <li>
+                        <a href="#" class="text-decoration-none">Dự án của chúng tôi</a>
+                    </li>
                     <li><a href="#" class="text-decoration-none">Liên hệ</a></li>
                 </ul>
             </div>
@@ -348,9 +222,7 @@
                     </li>
                     <li>
                         <ion-icon name="call"></ion-icon>
-                        <a href="#" class="text-decoration-none">
-                            18001000
-                        </a>
+                        <a href="#" class="text-decoration-none"> 18001000 </a>
                     </li>
                 </ul>
             </div>
@@ -360,7 +232,7 @@
                     <p>Có hay không có đừng tìm</p>
                     <div class="footer__email--submit">
                         <form action="#" method="GET" id="message">
-                            <input type="email" name='email' id="email" placeholder="Email Address">
+                            <input type="email" name="email" id="email" placeholder="Email Address" />
                         </form>
                         <button type="submit" form="message" value="Submit">
                             <ion-icon name="arrow-forward"></ion-icon>
@@ -391,7 +263,9 @@
         <div class="copyright__blur"></div>
         <div class="copyright__box container">
             <div class="copyright__left">
-                <p>&copy; Bản quyền thuộc về nhóm 9 K15 <span>Thực tập cơ sở ngành</span>
+                <p>
+                    &copy; Bản quyền thuộc về nhóm 9 K15
+                    <span>Thực tập cơ sở ngành</span>
                 </p>
             </div>
             <div class="copyright__right">
@@ -403,12 +277,13 @@
     </section>
     <!-- end copyright -->
 
-
     <script src="/client/static/js/home.js"></script>
     <!-- jQuery -->
     <script src="/client/static/js/jquery-1.11.1.min.js"></script>
     <!-- Owl carosel -->
     <script src="/client/plugins/owlcarousel/owl.carousel.min.js"></script>
+
+    <script src="/client/static/js/pagination.min.js"></script>
 </body>
 
 </html>

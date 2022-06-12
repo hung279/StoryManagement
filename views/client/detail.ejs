@@ -1,31 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Truyện hay</title>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,900&family=Cherish&family=Hind+Siliguri:wght@300;500&display=swap"
-        rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/client/static/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/client/static//favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/client/static//favicon/favicon-16x16.png">
-    <!-- home -->
-    <link rel="stylesheet" href="/client/static/css/home.css">
+<%- include("./common/head.ejs")%>
+
     <!-- detail -->
     <link rel="stylesheet" href="/client/static/css/detail.css">
-    <!-- boostrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="/client/plugins/owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="/client/plugins/owlcarousel/assets/owl.theme.default.min.css">
-    <!-- jQuery -->
-    <script src="/client/static/js/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -68,94 +47,7 @@
     <!-- end headerContact -->
 
     <!-- header -->
-    <div class="wrapper" id="wrapper__header">
-        <div class="slider__box">
-            <div class="indicators " style="display: none;">
-                <span id="btn__baner1" class="active"></span>
-                <span id="btn__baner2"></span>
-                <span id="btn__baner3"></span>
-            </div>
-        </div>
-        <div class="header__box">
-            <div class="header__navbar container">
-                <nav id="navbar">
-                    <a class="logo text-decoration-none" href="#">TRUYENHAY</a>
-                    <ul class="menu" id="side__bar">
-                        <li><a href="#" class="text_menu menu_parent text-decoration-none">Trang chủ</a></li>
-                        <li class="menu_parent">
-                            <a href="#types" class="text_menu text-decoration-none">Thể loại</a>
-                            <ul class="menu_child">
-                                <li>
-                                    <a class="text_menuchild text-decoration-none" href="">Phiêu lưu</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Tình cảm</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Dân gian</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Gia đình</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu_parent">
-                            <a href="#category" class="text_menu text-decoration-none">Danh mục</a>
-                            <ul class="menu_child">
-                                <li>
-                                    <a class="text_menuchild text-decoration-none" href="">Phiêu lưu</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Tình cảm</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Dân gian</a>
-                                </li>
-                                <li>
-                                    <a href="" class="text_menuchild text-decoration-none">Gia đình</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#teens" class="text_menu text-decoration-none">Truyện teen</a></li>
-                        <li><a href="#vips" class="text_menu text-decoration-none">Truyện VIP</a></li>
-                        <li class="menu__tool">
-                            <div class="tool">
-                                <a href="#" class="tool__item">
-                                    <ion-icon name="search-outline"></ion-icon>
-                                </a>
-                                <a class="user" href="#">
-                                    <img src="https://img.icons8.com/windows/32/ffffff/user.png" />
-                                </a>
-                                <a class="logout" href="#">
-                                    <img src="https://img.icons8.com/ios-filled/25/ffffff/logout-rounded.png" />
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="icon" id="menu__btn">
-                        <ion-icon name="menu-outline"></ion-icon>
-                    </div>
-                    <div class="tool">
-                        <a href="#" class="tool__item">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </a>
-                    </div>
-                    <div class="user tool">
-                        <a class="nav-link user icon-menu">
-                            <img src="https://img.icons8.com/windows/32/ffffff/user.png" />
-                        </a>
-                    </div>
-                    <div class="login tool">
-                        <a class="nav-link logout icon-menu">
-                            <img src="https://img.icons8.com/ios-filled/25/ffffff/logout-rounded.png" />
-                        </a>
-                    </div>
-                </nav>
-            </div>
-            <hr>
-
-        </div>
-    </div>
+    <%- include("./common/header.ejs")%>
     <!-- end header -->
     <div class="wrapper bgmenu"></div>
 
@@ -193,7 +85,7 @@
                     <div class="description-detail">
                         <strong>Tóm tắt </strong> :
                         <span class="description-detail-text">
-                            <%- story.content %>
+                            <%- story.introduce %>
 
                         </span>
                         <a class="continue-detail">
@@ -202,7 +94,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="button" class="btn btn-primary btn-md  mt-4 mb-5 ">Đọc truyện</button>
+                    <a href="/stories/show/<%= story._id %>" class="btn btn-primary btn-md  mt-4 mb-5 ">Đọc truyện</a>
                 </div>
             </div>
         </div>
