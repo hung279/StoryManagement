@@ -7,7 +7,7 @@ const queryStorys = async (filter, options) => {
   return storys;
 };
 
-const createStory = async (storyBody) => {
+const addStory = async (storyBody) => {
   return Story.create(storyBody);
 };
 
@@ -42,7 +42,7 @@ const getStoryBySlug = async (slug) => {
 
 module.exports = {
   queryStorys,
-  createStory,
+  addStory,
   getStoryById,
   updateStoryById,
   deleteStoryById,

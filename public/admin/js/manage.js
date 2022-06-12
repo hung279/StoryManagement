@@ -85,18 +85,18 @@ function deleteStory() {
                 success: function (res) {
                     if (res.status == 'success') {
                         $('#basicModal').modal('hide');
-                        toastr.success('Xoa thanh cong');
+                        toastr.success('Xóa thành công');
                         table.ajax.reload();
                         return;
                     } else {
                         $('#basicModal').modal('hide');
-                        toastr.error('Xoa khong thanh cong');
+                        toastr.error('Xóa không thành công');
                         return;
                     }
                 },
                 error: function () {
                     $('#basicModal').modal('hide');
-                    toastr.error('Xoa khong thanh cong');
+                    toastr.error('Xóa không thành công');
                 }
             });
         })

@@ -247,45 +247,54 @@
 
         <div class="product">
             <div class="all-product ">
-                <% stories.forEach((story) => {%>
-                    <!-- <div class="card item_product" style="width: 15rem;">
-                        <a href="" class=" text-decoration-none text-dark"></a>
-                        <img src="/client/static/image/img_anime/thumb-1920-111695.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Some sdfsadfggquick example text to build on the card title and make up the
-                                bulk of fsadfggquick example text to build on the card title and make up the bulk of
-                                fsadfggquick example text to build on the card title and make up the bulk of
-                                the
-                                card's
-                                content.</p>
-                        </div>
-                        </a>
-                    </div> -->
-
+                <% stories.forEach((story)=> {%>
                     <div class="card item_product" style="width: 15rem;">
                         <a href="/stories/<%= story.slug %>" class=" text-decoration-none text-dark">
-                            <img src="/client/static/image/img_anime/<%= story.thumbnail %>" class="card-img-top" alt="...">
+                            <img src="/client/static/image/img_anime/<%= story.thumbnail %>" class="card-img-top"
+                                alt="...">
                             <div class="card-body">
-                                <p class="card-text"><%= story.name%></p>
+                                <p class="card-text">
+                                    <%= story.name%>
+                                </p>
                             </div>
                             <div class="card-bottom">
                                 <div class="text-center">
                                     <%= story.rating %>
-                                    <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png" />
+                                        <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png" />
                                 </div>
                                 <div class="author">
-                                    <div>Tác giả: <%= story.author %></div>
+                                    <div>Tác giả: <%= story.author %>
+                                    </div>
                                     <div>Trạng thái:5/7 tập</div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    
-                <% })%>       
 
-
+                    <% })%>
             </div>
-
+            <div class="row">
+                
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
 
         </div>

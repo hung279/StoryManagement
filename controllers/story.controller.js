@@ -6,7 +6,7 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 const addStory = catchAsync(async (req, res, next) => {
-  const newStory = await storyService.addStory(req, res, next);
+  const newStory = await storyService.addStory(req.body);
 
   res.status(httpStatus.CREATED).json({ status: "success", data: newStory });
 });

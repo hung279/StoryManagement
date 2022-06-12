@@ -152,14 +152,14 @@
                 //console.log(res.body);
                 const data = await res.json();
                 if (data.status == 'success') {
-                    toastr.success('Tao thanh cong');
+                    toastr.success('Tạo thành công');
                     setTimeout(() => {
                         location.replace('/admin/manage');
                     }, 3000);
                 }
                 //console.log(data);
             } catch (error) {
-                console.log(err.message);
+                console.log(error.message);
             }
         })
     </script>

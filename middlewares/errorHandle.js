@@ -1,68 +1,44 @@
-const AppError = require("./../utils/appError");
+const mongoose = require('mongoose');
+const httpStatus = require('http-status');
+const config = require('../config/config');
+const logger = require('../config/logger');
+const AppError = require('../utils/appError');
 
-const sendErrorDev = (err, res) => {
-  console.log(err.stack);
-  res.status(err.statusCode).json({
-    status: err.status,
-    error: err,
-    message: err.message,
-    stack: err.stack,
-  });
+const errorConverter = (err, req, res, next) => {
+  let error = err;
+  if (!(error instanceof AppError)) {
+    const statusCode =
+      error.statusCode || error instanceof mongoose.Error ? httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
+    const message = error.message || httpStatus[statusCode];
+    error = new AppError(statusCode, message, false, err.stack);
+  }
+  next(error);
 };
 
-const sendErrorProd = (err, res) => {
-  if (err.isOperational) {
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message,
-    });
-  } else {
-    console.error(`Error: ${err}`);
+// eslint-disable-next-line no-unused-vars
+const errorHandler = (err, req, res, next) => {
+  let { statusCode, message } = err;
 
-    res.status(500).json({
-      status: "error",
-      message: "Something went very wrong!",
-    });
+  if (config.env === 'production' && !err.isOperational) {
+    statusCode = httpStatus.INTERNAL_SERVER_ERROR;
+    message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
   }
+
+  res.locals.errorMessage = err.message;
+
+  const response = {
+    code: statusCode,
+    message,
+    ...(config.env === 'development' && { stack: err.stack }),
+  };
+
+  if (config.env === 'development') {
+    logger.error(err);
+  }
+  res.status(statusCode).send(response);
 };
 
-module.exports = (err, req, res, next) => {
-  err.statusCode = err.statusCode || 500;
-  err.status = err.status || "error";
-
-  if (process.env.NODE_ENV === "development") {
-    sendErrorDev(err, res);
-  } else if (process.env.NODE_ENV === "production") {
-    let error = { ...err };
-    error.name = err.name;
-
-    if (error.name === "CastError") {
-      const message = `Invalid ${err.path}: ${err.value}.`;
-      error = new AppError(message, 400);
-    }
-
-    if (error.code === 11000) {
-      const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
-
-      const message = `Duplicate field value: ${value}. Please use another value!`;
-      error = new AppError(message, 400);
-    }
-
-    if (error.name === "ValidationError") {
-      const errors = Object.values(err.errors).map((el) => el.message);
-
-      const message = `Invalid input data. ${errors.join(". ")}`;
-      error = new AppError(message, 400);
-    }
-
-    if (error.name === "JsonWebTokenError") {
-      error = new AppError("Invalid token. Please log in again!", 401);
-    }
-
-    if (error.name === "TokenExpiredError") {
-      error = new AppError("Your token has expired! Please log in again.", 401);
-    }
-
-    sendErrorProd(error, res);
-  }
+module.exports = {
+  errorConverter,
+  errorHandler,
 };
