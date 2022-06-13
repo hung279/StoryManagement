@@ -13,9 +13,9 @@ function getStorys() {
             { data: null, defaultContent: "", className: "sttColumn" },
             { data: 'name' },
             {
-                data: 'thumnail',
+                data: 'thumbnail',
                 render: function (data, type, row) {
-                    return `<img src="/client/static/image/img_anime/thumb-1920-111695.jpg" width=100 height=100 >`;
+                    return `<img src="/client/static/image/img_anime/${data}" width=100 height=100 >`;
                 },
             },
             { data: 'category' },
@@ -23,6 +23,7 @@ function getStorys() {
             { data: 'author' },
             {
                 data: 'id',
+                className: "center",
                 render: function (data, type, row) {
                     return `<span>
                                 <a href="/admin/manage/edit/${data}" class="edit" data-toggle="tooltip" data-placement="top"
@@ -44,7 +45,8 @@ function getStorys() {
             },
             {
                 searchable: false,
-                targets: [0, 3, 4],
+                orderable: false,
+                targets: [0, 2, 6],
             },
         ],
         fnRowCallback: function (nRow, aData, iDisplayIndex) {
@@ -90,6 +92,7 @@ function deleteStory() {
                         return;
                     } else {
                         $('#basicModal').modal('hide');
+                        table.ajax.reload();
                         toastr.error('Xóa không thành công');
                         return;
                     }

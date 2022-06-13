@@ -36,16 +36,18 @@
             <div class="container-fluid mt-3">
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
-                        <div class="card gradient-2">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Tổng số truyện</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">37</h2>
-                                    <p class="text-white mb-0">Mới nhất</p>
+                        <a href="/admin/manage">
+                            <div class="card gradient-2">
+                                <div class="card-body">
+                                    <h3 class="card-title text-white">Tổng số truyện</h3>
+                                    <div class="d-inline-block">
+                                        <h2 class="text-white"><%= storiesLength %></h2>
+                                        <p class="text-white mb-0">Mới nhất</p>
+                                    </div>
+                                    <span class="float-right display-5 opacity-5"><i class="fa fa-edit"></i></span>
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-edit"></i></span>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="card gradient-3">

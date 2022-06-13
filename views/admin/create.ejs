@@ -134,12 +134,12 @@
             let thumbnail = document.getElementById('thumbnail-story');   
             formData.append('thumbnail', thumbnail.files[0].name);
             formData.append('content', $(".summernote").summernote('code'));
-            // console.log(formData);
+            console.log(formData);
             // for(var pair of formData.entries()) {
             //     console.log(pair[0]+ ', '+ pair[1]); 
             // }
             const plainFormData = Object.fromEntries(formData.entries());
-            //console.log(plainFormData);
+            // console.log(plainFormData);
             try {
                 const res = await fetch('http://localhost:3000/api/stories', {
                     method: 'POST',

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { toJSON } = require('./plugins');
-const { paginate } = require('./plugins');
+const { toJSON } = require("./plugins");
+const { paginate } = require("./plugins");
 const slugify = require("slugify");
 
 const storySchema = mongoose.Schema(
@@ -35,12 +35,6 @@ const storySchema = mongoose.Schema(
       type: String,
       required: [true, "Thể loại là trường bắt buộc"],
     },
-    // rating: {
-    //   type: Number,
-    //   default: 0,
-    //   min: [1, "Đánh giá từ 1 -> 5"],
-    //   max: [5, "Đánh giá từ 1 -> 5"],
-    // },
   },
   {
     timestamp: true,

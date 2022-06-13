@@ -49,6 +49,7 @@ app.use("/auth", authRouter);
 app.use("/api", router);
 
 app.use("*", (req, res, next) => {
+  res.render("error");
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 

@@ -4,7 +4,10 @@ const AppError = require("../utils/appError");
 
 module.exports = {
   homePage: catchAsync(async (req, res, next) => {
-    res.render("admin");
+    const stories = await Story.find();
+    res.render("admin", {
+      storiesLength: stories.length
+    });
   }),
 
   login: catchAsync(async (req, res, next) => {

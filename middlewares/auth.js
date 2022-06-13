@@ -3,6 +3,7 @@ const User = require("../models/user.model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const config = require("../config/config");
+const mongoose = require("mongoose");
 
 exports.protect = catchAsync(async (req, res, next) => {
   let tokens = req.signedCookies?.tokens;
@@ -29,8 +30,10 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 });
 
-exports.rolesAllowed = (...roles) => (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
+exports.rolesAllowed = (...roles) => async (req, res, next) => {
+    const currentUser = await User.findById(req.userId);
+    console.log(currentUser.role);
+    if (!roles.includes(currentUser.role)) {
       return next(new AppError("Không thể thực hiện hành động này", 403));
     }
     next();

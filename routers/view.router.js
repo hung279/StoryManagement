@@ -8,7 +8,5 @@ router.get("/", viewController.homePage);
 router.get("/stories/:slug", viewController.detailPage);
 
 router.get("/stories/show/:storyId", viewController.detailStory);
-// router.get("/auth/login", viewController.login);
-
 
 module.exports = router;

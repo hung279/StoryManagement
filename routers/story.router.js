@@ -8,21 +8,21 @@ router.route("/").get(storyController.getStories);
 router
   .route("/")
   .post(
-    // authMiddleware.protect,
-    // authMiddleware.rolesAllowed("admin"),
+    authMiddleware.protect,
+    authMiddleware.rolesAllowed("admin"),
     storyController.addStory
   );
 
 router
   .route("/:storyId")
   .patch(
-    // authMiddleware.protect,
-    // authMiddleware.rolesAllowed("admin"),
+    authMiddleware.protect,
+    authMiddleware.rolesAllowed("admin"),
     storyController.updateStory
   )
   .delete(
     authMiddleware.protect,
-    // authMiddleware.rolesAllowed("admin"),
+    authMiddleware.rolesAllowed("admin"),
     storyController.deleteStory
   );
 

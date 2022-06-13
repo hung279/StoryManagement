@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const userRouter = require("./user.router");
 const storyRouter = require("./story.router");
-const reviewRouter = require("./review.router");
-const authRouter = require("./auth.router");
 
 const routes = [
   {
@@ -12,10 +10,6 @@ const routes = [
   {
     path: "/stories",
     route: storyRouter,
-  },
-  {
-    path: "/reviews",
-    route: reviewRouter,
   },
 ];
 
