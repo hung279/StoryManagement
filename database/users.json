@@ -1,0 +1,18 @@
+[
+    {
+        "_id": "626eb557f54ffbaeb9ae2bf9",
+        "full_name": "Dinh Tan Hung",
+        "email": "hung279@gmail.com",
+        "username": "hung279",
+        "password": "$2b$08$gaqftZ34Rrd9Gw93kZfytuuXVvznw..B/5Qa5z52qKzsWGgSlnKMS",
+        "role": "admin"
+    },
+    {
+        "_id": "6270b627cef2578ec2b10658",
+        "full_name": "vana123",
+        "email": "vana123",
+        "username": "vana123",
+        "password": "$2b$08$3jcVdNsiCXL/w7pO6Z1NoOaZ0rTbEILiCq6TWC7h7WMrTGkmh0mMO",
+        "role": "user"
+    }
+]
