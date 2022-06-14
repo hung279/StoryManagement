@@ -135,7 +135,7 @@ $('.login').click(function () {
         $('.alert').attr("style", "display:none");
         $.ajax({
             type: "POST",
-            url: 'http://localhost:3000/auth/login',
+            url: '/auth/login',
             dataType: "JSON",
             data: { username, password },
             success: function (res) {
@@ -184,7 +184,7 @@ $('.register').click(function () {
         console.log('pass', password);
         $.ajax({
             type: "POST",
-            url: 'http://localhost:3000/auth/register',
+            url: '/auth/register',
             data: { full_name, email, username, password },
             dataType: "JSON",
             success: function (res) {

@@ -4,7 +4,7 @@ function getStorys() {
         serverSide: true,
         ajax: {
             type: 'GET',
-            url: 'http://localhost:3000/api/stories',
+            url: '/api/stories',
             dataSrc: function (json) {
                 return json.data;
             },
@@ -82,7 +82,7 @@ function deleteStory() {
 
         $('#remove-confirm').on('click', function () {
             $.ajax({
-                url: `http://localhost:3000/api/stories/${story.id}`,
+                url: `/api/stories/${story.id}`,
                 type: 'DELETE',
                 success: function (res) {
                     if (res.status == 'success') {

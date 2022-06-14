@@ -141,7 +141,7 @@
             const plainFormData = Object.fromEntries(formData.entries());
             // console.log(plainFormData);
             try {
-                const res = await fetch('http://localhost:3000/api/stories', {
+                const res = await fetch('/api/stories', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
