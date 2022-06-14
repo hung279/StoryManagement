@@ -5,6 +5,10 @@ const authMiddleware = require("../middlewares/auth")
 
 router.get("/login", adminController.login);
 
+router.get("/forgot-password", adminController.forgotPassword);
+
+router.get("/reset-password/:token", adminController.resetPassword);
+
 router.get("/manage", authMiddleware.protect, adminController.managePage);
 
 router.get("/manage/create", authMiddleware.protect, adminController.createPage);

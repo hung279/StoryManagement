@@ -14,6 +14,14 @@ module.exports = {
     res.render("admin/login");
   }),
 
+  forgotPassword: catchAsync(async (req, res, next) => {
+    res.render("admin/forgot-password");
+  }),
+
+  resetPassword: catchAsync(async (req, res, next) => {
+    res.render("admin/reset-password");
+  }),
+
   managePage: catchAsync(async (req, res, next) => {
     res.render("admin/manage");
   }),

@@ -40,7 +40,8 @@ const forgotPassword = catchAsync(async (req, res) => {
   const resetPasswordToken = await tokenService.generateResetPasswordToken(
     req.body.email
   );
-  await emailService.sendResetPasswordEmail(req.body.email, resetPasswordToken);
+  const fullUrl = req.protocol + '://' + req.get('host');
+  await emailService.sendResetPasswordEmail(req.body.email, resetPasswordToken, fullUrl);
   res.status(httpStatus.NO_CONTENT).send();
 });
 
