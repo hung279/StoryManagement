@@ -33,7 +33,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await User.deleteMany();
-    await Store.deleteMany();
+    await Story.deleteMany();
     console.log("delete data successfully");
   } catch (error) {
     console.log(error.message);
